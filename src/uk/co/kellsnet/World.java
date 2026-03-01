@@ -32,4 +32,15 @@ public class World {
         }
     }
 
+    public int getHeight() {
+        return height;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public char getTileAt(int y, int x) {
+        return tiles[y][x];
+    }
 }
