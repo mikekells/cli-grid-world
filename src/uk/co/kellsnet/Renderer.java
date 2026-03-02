@@ -13,7 +13,7 @@ public class Renderer {
 
         for (int y = 0; y < world.getHeight(); y++) {
             for (int x = 0; x < world.getWidth(); x++) {
-                if (p.getX() == x && p.getY() == y) {
+                if (x == p.getX() && y == p.getY()) {
                     System.out.print('@');
                 } else {
                     System.out.print(world.getTileAt(y, x));
@@ -21,8 +21,7 @@ public class Renderer {
             }
             System.out.println();
         }
-        System.out.println();
-        System.out.print("> ");
+
     }
 
 }

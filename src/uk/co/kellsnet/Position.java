@@ -2,8 +2,8 @@ package uk.co.kellsnet;
 
 public class Position {
 
-    private final int y;
-    private final int x;
+    private int y;
+    private int x;
 
     public Position (int y, int x) {
         this.y = y;
@@ -18,4 +18,8 @@ public class Position {
         return x;
     }
 
+    public void set(int y, int x) {
+        this.y = y;
+        this.x = x;
+    }
 }
