@@ -20,19 +20,27 @@ public class Main {
 
             switch (c) {
                 case 'W' -> {
+                    state.setFacing(Direction.UP);
                     if(!Movement.tryMove(state, -1, 0)) System.out.println("Bump! Can't walk there.");
                 }
 
                 case 'A' -> {
+                    state.setFacing(Direction.LEFT);
                     if(!Movement.tryMove(state, 0, -1)) System.out.println("Bump! Can't walk there.");
                 }
 
                 case 'S' -> {
+                    state.setFacing(Direction.DOWN);
                     if(!Movement.tryMove(state, +1, 0)) System.out.println("Bump! Can't walk there.");
                 }
 
                 case 'D' -> {
+                    state.setFacing(Direction.RIGHT);
                     if(!Movement.tryMove(state, 0, +1)) System.out.println("Bump! Can't walk there.");
+                }
+
+                case 'E' -> {
+                    Interaction.interact(state);
                 }
 
                 case 'Q' -> state.stop();

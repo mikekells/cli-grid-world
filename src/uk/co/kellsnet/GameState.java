@@ -3,6 +3,7 @@ package uk.co.kellsnet;
 public class GameState {
 
     private boolean running = true;
+    private Direction facing = Direction.RIGHT;
 
     World world;
     Position position;
@@ -26,5 +27,13 @@ public class GameState {
 
     public Position getPosition() {
         return position;
+    }
+
+    public Direction getFacing() {
+        return facing;
+    }
+
+    public void setFacing(Direction facing) {
+        this.facing = facing;
     }
 }

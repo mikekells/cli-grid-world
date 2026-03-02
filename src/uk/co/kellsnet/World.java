@@ -35,6 +35,9 @@ public class World {
             tiles[y][0] = '#';
             tiles[y][width - 1] = '#';
         }
+
+        // Place chest
+        tiles[4][7] = 'C';
     }
 
     public int getHeight() {
@@ -47,6 +50,10 @@ public class World {
 
     public char getTileAt(int y, int x) {
         return tiles[y][x];
+    }
+
+    public void setTileAt(int y, int x, char tile) {
+        tiles[y][x] = tile;
     }
 
     public boolean isWalkable(int y, int x) {
