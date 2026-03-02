@@ -17,42 +17,14 @@ public class World {
         generateWorld();
     }
 
+
     public void generateWorld() {
-        int cx = width / 2;
-        int cy = height / 2;
-
-        int r = Math.min(width, height) / 2 - 1;
-        int thickness = 1;
-
-        int outer2 = r * r;
-        int innerR = r - thickness;
-        int inner2 = innerR * innerR;
-
-        for (int y = 0; y < height; y++) {
+        // Fill the floor
+        for(int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-
-                int dx = x - cx;
-                int dy = y - cy;
-                int d2 = dx * dx + dy * dy;
-
-                if (d2 <= inner2) {
-                    tiles[y][x] = FLOOR;        // inside room
-                } else if (d2 <= outer2) {
-                    tiles[y][x] = WALL;         // boundary ring
-                } else {
-                    tiles[y][x] = VOID;         // outside (still wall for now)
-                }
+                tiles[y][x] = '.';
             }
         }
-
-
-//    public void generateWorld() {
-//        // Fill the floor
-//        for(int y = 0; y < height; y++) {
-//            for (int x = 0; x < width; x++) {
-//                tiles[y][x] = '.';
-//            }
-//        }
 
         //Border walls
         for(int x = 0; x < width; x++) {
@@ -75,5 +47,10 @@ public class World {
 
     public char getTileAt(int y, int x) {
         return tiles[y][x];
+    }
+
+    public boolean isWalkable(int y, int x) {
+        if (x <= 0 || x >= width - 1 || y <= 0 || y >= height - 1) return false;
+        return tiles[y][x] != '#';
     }
 }

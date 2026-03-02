@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        World world = new World(48, 48);
+        World world = new World(6, 12);
         Position position = new Position(2, 2);
         GameState state = new GameState(world, position);
         Renderer renderer = new Renderer();
@@ -19,13 +19,21 @@ public class Main {
             char c = input.charAt(0);
 
             switch (c) {
-                case 'W' -> Movement.tryMove(state, -1, 0);
+                case 'W' -> {
+                    if(!Movement.tryMove(state, -1, 0)) System.out.println("Bump! Can't walk there.");
+                }
 
-                case 'A' -> Movement.tryMove(state, 0, -1);
+                case 'A' -> {
+                    if(!Movement.tryMove(state, 0, -1)) System.out.println("Bump! Can't walk there.");
+                }
 
-                case 'S' -> Movement.tryMove(state, +1, 0);
+                case 'S' -> {
+                    if(!Movement.tryMove(state, +1, 0)) System.out.println("Bump! Can't walk there.");
+                }
 
-                case 'D' -> Movement.tryMove(state, 0, +1);
+                case 'D' -> {
+                    if(!Movement.tryMove(state, 0, +1)) System.out.println("Bump! Can't walk there.");
+                }
 
                 case 'Q' -> state.stop();
                 default -> System.out.println("Use WASD or Q.");
