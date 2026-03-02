@@ -26,5 +26,4 @@ public class Renderer {
         System.out.print("> ");
 
     }
-
 }
