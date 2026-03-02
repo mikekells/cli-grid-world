@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        World world = new World(12, 12);
+        World world = new World(12, 24);
         Position position = new Position(2, 2);
         GameState state = new GameState(world, position);
         Renderer renderer = new Renderer();
