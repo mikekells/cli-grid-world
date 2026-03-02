@@ -60,7 +60,7 @@ public class World {
     }
 
     public boolean isWalkable(int y, int x) {
-        if (x <= 0 || x >= width - 1 || y <= 0 || y >= height - 1) return false;
-        return tiles[y][x] != '#';
+        if (x < 0 || x > width - 1 || y < 0 || y > height - 1) return false;
+        return tiles[y][x] != '#' && tiles[y][x] != '+';
     }
 }
