@@ -6,8 +6,8 @@ public enum Direction {
     LEFT(0, -1),
     RIGHT(0, 1);
 
-    private final int dx;
     private final int dy;
+    private final int dx;
 
     Direction(int dy, int dx) {
         this.dy = dy;

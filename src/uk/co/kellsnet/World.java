@@ -23,18 +23,18 @@ public class World {
         // Fill the floor
         for(int y = 0; y < height; y++) {
             for (int x = 0; x < width; x++) {
-                tiles[y][x] = '.';
+                tiles[y][x] = FLOOR;
             }
         }
 
         //Border walls
         for(int x = 0; x < width; x++) {
-            tiles[0][x] = '#';
-            tiles[height - 1][x] = '#';
+            tiles[0][x] = WALL;
+            tiles[height - 1][x] = WALL;
         }
         for(int y = 0; y < height; y++) {
-            tiles[y][0] = '#';
-            tiles[y][width - 1] = '#';
+            tiles[y][0] = WALL;
+            tiles[y][width - 1] = WALL;
         }
 
         tiles[height - 1][width / 2] = DOOR;
@@ -61,6 +61,6 @@ public class World {
 
     public boolean isWalkable(int y, int x) {
         if (x < 0 || x > width - 1 || y < 0 || y > height - 1) return false;
-        return tiles[y][x] != '#' && tiles[y][x] != '+';
+        return tiles[y][x] != WALL && tiles[y][x] != DOOR;
     }
 }
