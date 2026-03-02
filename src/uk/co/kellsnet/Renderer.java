@@ -8,7 +8,6 @@ public class Renderer {
 
         System.out.println();
         System.out.println("=== Welcome To The Game ===");
-        System.out.println("Use WASD or Q to quit.");
         System.out.println();
 
         for (int y = 0; y < world.getHeight(); y++) {
@@ -21,6 +20,10 @@ public class Renderer {
             }
             System.out.println();
         }
+
+        System.out.println();
+        System.out.println("Use 'WASD' or 'Q' to quit.");
+        System.out.print("> ");
 
     }
 

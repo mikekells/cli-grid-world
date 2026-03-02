@@ -13,7 +13,6 @@ public class Movement {
             state.getPosition().set(ty, tx);
         }
 
-
     }
 
 }
