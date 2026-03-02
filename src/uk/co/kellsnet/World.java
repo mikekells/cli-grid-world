@@ -5,6 +5,7 @@ public class World {
     private static final char FLOOR = '.';
     private static final char WALL = '#';
     private static final char VOID = '*';
+    private static final char DOOR = '+';
 
     private final int height;
     private final int width;
@@ -35,6 +36,8 @@ public class World {
             tiles[y][0] = '#';
             tiles[y][width - 1] = '#';
         }
+
+        tiles[height - 1][width / 2] = DOOR;
 
         // Place chest
         tiles[4][7] = 'C';

@@ -9,6 +9,8 @@ public class Renderer {
         System.out.println();
         System.out.println("=== Welcome To The Game ===");
         System.out.println();
+        System.out.println("Facing: " + state.getFacing());
+        System.out.println("Player Posititon: y:(" + p.getY() + ") x:(" + p.getX() + ")");
 
         for (int y = 0; y < world.getHeight(); y++) {
             for (int x = 0; x < world.getWidth(); x++) {
