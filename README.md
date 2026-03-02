@@ -68,13 +68,13 @@ This project focuses on developing instinctive understanding of:
 
 ## Roadmap
 
-### Phase 1 — CLI Foundations (In progress)
+### Phase 1 — CLI Foundations (DONE)
 
 * World generation
 * Player movement
 * Rendering loop
 
-### Phase 2 — System Expansion (Planned)
+### Phase 2 — System Expansion (In progress)
 
 * Entities / NPCs
 * Interaction systems
