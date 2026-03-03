@@ -1,5 +1,8 @@
 package uk.co.kellsnet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Renderer {
 
     public void render(GameState state) {
@@ -8,6 +11,13 @@ public class Renderer {
 
         System.out.println();
         System.out.println("=== Welcome To The Game ===");
+        System.out.println();
+        System.out.println("Facing: " + state.getFacing());
+        System.out.println("Player Posititon: y:(" + p.getY() + ") x:(" + p.getX() + ")");
+        System.out.println("Log:");
+        for (String m : state.getMessages()) {
+            System.out.println("- " + m);
+        }
         System.out.println();
 
         for (int y = 0; y < world.getHeight(); y++) {
@@ -26,5 +36,4 @@ public class Renderer {
         System.out.print("> ");
 
     }
-
 }
