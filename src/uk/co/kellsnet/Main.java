@@ -16,27 +16,30 @@ public class Main {
             renderer.render(state);
 
             String input = scanner.nextLine().trim().toUpperCase();
+            if(input.isEmpty()) {
+                continue;
+            }
             char c = input.charAt(0);
 
             switch (c) {
                 case 'W' -> {
                     state.setFacing(Direction.UP);
-                    if(!Movement.tryMove(state, -1, 0)) System.out.println("Bump! Can't walk there.");
+                    if(!Movement.tryMove(state, -1, 0)) state.addMessage("Bump! Can't walk there.");
                 }
 
                 case 'A' -> {
                     state.setFacing(Direction.LEFT);
-                    if(!Movement.tryMove(state, 0, -1)) System.out.println("Bump! Can't walk there.");
+                    if(!Movement.tryMove(state, 0, -1)) state.addMessage("Bump! Can't walk there.");
                 }
 
                 case 'S' -> {
                     state.setFacing(Direction.DOWN);
-                    if(!Movement.tryMove(state, +1, 0)) System.out.println("Bump! Can't walk there.");
+                    if(!Movement.tryMove(state, +1, 0)) state.addMessage("Bump! Can't walk there.");
                 }
 
                 case 'D' -> {
                     state.setFacing(Direction.RIGHT);
-                    if(!Movement.tryMove(state, 0, +1)) System.out.println("Bump! Can't walk there.");
+                    if(!Movement.tryMove(state, 0, +1)) state.addMessage("Bump! Can't walk there.");
                 }
 
                 case 'E' -> {

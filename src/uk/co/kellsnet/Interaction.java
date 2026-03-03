@@ -14,11 +14,12 @@ public class Interaction {
 
         if (tile == 'C') {
             world.setTileAt(ty, tx, '.');
-            System.out.println("You opened the chest!");
+            state.addMessage("You opened the chest!");
         } else if (tile == '+') {
             world.setTileAt(ty, tx, '.');
+            state.addMessage("You opened the door!");
         } else {
-            System.out.println("Nothing to interact with.");
+            state.addMessage("Nothing to interact with.");
         }
 
     }
