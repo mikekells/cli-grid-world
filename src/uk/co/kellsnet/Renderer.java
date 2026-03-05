@@ -7,13 +7,13 @@ public class Renderer {
 
     public void render(GameState state) {
         World world = state.getWorld();
-        Position p = state.getPosition();
+        Position p = state.getPlayer().getPosition();
 
         System.out.println();
         System.out.println("=== Welcome To The Game ===");
         System.out.println();
         System.out.println("Facing: " + state.getFacing());
-        System.out.println("Player Posititon: y:(" + p.getY() + ") x:(" + p.getX() + ")");
+        System.out.println("Player Position: y:(" + p.getY() + ") x:(" + p.getX() + ")");
         System.out.println("Log:");
         for (String m : state.getMessages()) {
             System.out.println("- " + m);
@@ -22,8 +22,9 @@ public class Renderer {
 
         for (int y = 0; y < world.getHeight(); y++) {
             for (int x = 0; x < world.getWidth(); x++) {
-                if (x == p.getX() && y == p.getY()) {
-                    System.out.print('@');
+                Entity e = findEntityAt(state, y, x);
+                if (e != null) {
+                    System.out.print(e.getGlyph());
                 } else {
                     System.out.print(world.getTileAt(y, x));
                 }
@@ -35,5 +36,15 @@ public class Renderer {
         System.out.println("Use 'WASD' or 'Q' to quit.");
         System.out.print("> ");
 
+    }
+
+    private Entity findEntityAt(GameState state, int y, int x) {
+        for (Entity e : state.getEntities()) {
+            Position p = e.getPosition();
+            if (p.getY() == y && p.getX() == x) {
+                return e;
+            }
+        }
+        return null;
     }
 }

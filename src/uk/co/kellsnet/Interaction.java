@@ -3,7 +3,7 @@ package uk.co.kellsnet;
 public class Interaction {
 
     public static void interact(GameState state) {
-        Position p = state.getPosition();
+        Position p = state.getPlayer().getPosition();
         Direction facing = state.getFacing();
         World world = state.getWorld();
 

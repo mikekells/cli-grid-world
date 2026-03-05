@@ -4,7 +4,7 @@ public class Movement {
 
     public static boolean tryMove (GameState state, int ny, int nx) {
         World world = state.getWorld();
-        Position p = state.getPosition();
+        Position p = state.getPlayer().getPosition();
 
         int y = p.getY();
         int x = p.getX();
@@ -13,7 +13,7 @@ public class Movement {
         int tx = x + nx;
 
         if (world.isWalkable(ty, tx)) {
-            state.getPosition().set(ty, tx);
+            p.set(ty, tx);
             return true;
         }
         return false;

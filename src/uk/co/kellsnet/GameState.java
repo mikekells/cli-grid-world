@@ -10,11 +10,17 @@ public class GameState {
     private final List<String> messages = new ArrayList<>();
 
     private final World world;
-    private final Position position;
+    private final List<Entity> entities = new ArrayList<>();
+    private final Entity player;
 
     public GameState(World world, Position position) {
         this.world = world;
-        this.position = position;
+
+        this.player = new Entity('@', position);
+        entities.add(player);
+        entities.add(new Entity('P', new Position(3, 5)));
+        addMessage("A mysterious pet appears...");
+        entities.add(new Entity('K', new Position(4,8)));
     }
 
     public boolean isRunning() {
@@ -27,10 +33,6 @@ public class GameState {
 
     public World getWorld() {
         return world;
-    }
-
-    public Position getPosition() {
-        return position;
     }
 
     public Direction getFacing() {
@@ -50,5 +52,13 @@ public class GameState {
 
     public List<String> getMessages() {
         return messages;
+    }
+
+    public List<Entity> getEntities() {
+        return entities;
+    }
+
+    public Entity getPlayer() {
+        return player;
     }
 }
