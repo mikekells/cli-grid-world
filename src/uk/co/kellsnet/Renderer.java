@@ -1,13 +1,19 @@
 package uk.co.kellsnet;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Renderer {
 
     public void render(GameState state) {
         World world = state.getWorld();
+        Map<String, Entity> entityAt = new HashMap<>();
         Position p = state.getPlayer().getPosition();
+
+        for (Entity e : state.getEntities()) {
+            Position ep = e.getPosition();
+            entityAt.put(key(ep.getY(), ep.getX()), e);
+        }
 
         System.out.println();
         System.out.println("=== Welcome To The Game ===");
@@ -22,9 +28,9 @@ public class Renderer {
 
         for (int y = 0; y < world.getHeight(); y++) {
             for (int x = 0; x < world.getWidth(); x++) {
-                Entity e = findEntityAt(state, y, x);
-                if (e != null) {
-                    System.out.print(e.getGlyph());
+                Entity entity = entityAt.get(key(y, x));
+                if (entity != null) {
+                    System.out.print(entity.getGlyph());
                 } else {
                     System.out.print(world.getTileAt(y, x));
                 }
@@ -38,13 +44,7 @@ public class Renderer {
 
     }
 
-    private Entity findEntityAt(GameState state, int y, int x) {
-        for (Entity e : state.getEntities()) {
-            Position p = e.getPosition();
-            if (p.getY() == y && p.getX() == x) {
-                return e;
-            }
-        }
-        return null;
+    private String key(int y, int x) {
+        return y + "," + x;
     }
 }

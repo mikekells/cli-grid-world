@@ -11,12 +11,12 @@ public class GameState {
 
     private final World world;
     private final List<Entity> entities = new ArrayList<>();
-    private final Entity player;
+    private final Player player;
 
     public GameState(World world, Position position) {
         this.world = world;
 
-        this.player = new Entity('@', position);
+        this.player = new Player(position);
         entities.add(player);
         entities.add(new Entity('P', new Position(3, 5)));
         addMessage("A mysterious pet appears...");
