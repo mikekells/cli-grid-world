@@ -38,7 +38,7 @@ public class World {
         }
 
         // Split the world
-        int wallY = width / 2;
+        int wallY = height / 2;
 
         for (int x = 1; x < width - 1; x++) {
             tiles[wallY][x] = WALL;
