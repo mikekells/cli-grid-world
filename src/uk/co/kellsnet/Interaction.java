@@ -10,16 +10,33 @@ public class Interaction {
         int ty = p.getY() + facing.dy();
         int tx = p.getX() + facing.dx();
 
+        if (!world.isInside(ty, tx)) {
+            state.addMessage("Nothing there.");
+            return;
+        }
+
+        Entity target = state.findEntityAt(ty, tx);
+
+        if (target instanceof Key) {
+            state.removeEntity(target);
+            state.addKey();
+            state.addMessage("Picked up key! (Keys: " + state.getKeys() + ")");
+            return;
+        }
+
         char tile = world.getTileAt(ty, tx);
 
         if (tile == 'C') {
             world.setTileAt(ty, tx, '.');
             state.addMessage("You opened the chest!");
         } else if (tile == '+') {
-            world.setTileAt(ty, tx, '.');
-            state.addMessage("You opened the door!");
-        } else {
-            state.addMessage("Nothing to interact with.");
+            if (state.useKey()) {
+                world.setTileAt(ty, tx, '.');
+                state.addMessage("Unlocked the door!");
+            } else {
+                state.addMessage("Door is locked. Need a key.");
+            }
+            return;
         }
 
     }

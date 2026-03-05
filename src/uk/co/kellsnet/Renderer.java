@@ -39,6 +39,7 @@ public class Renderer {
         }
 
         System.out.println();
+        System.out.println("Keys: " + state.getKeys());
         System.out.println("Use 'WASD' or 'Q' to quit.");
         System.out.print("> ");
 

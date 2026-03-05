@@ -37,7 +37,15 @@ public class World {
             tiles[y][width - 1] = WALL;
         }
 
-        tiles[height - 1][width / 2] = DOOR;
+        // Split the world
+        int wallY = width / 2;
+
+        for (int x = 1; x < width - 1; x++) {
+            tiles[wallY][x] = WALL;
+        }
+
+        tiles[wallY][width / 2 - 2] = DOOR;
+        tiles[wallY][width / 2 + 2] = DOOR;
 
         // Place chest
         tiles[4][7] = 'C';
@@ -60,7 +68,11 @@ public class World {
     }
 
     public boolean isWalkable(int y, int x) {
-        if (x < 0 || x > width - 1 || y < 0 || y > height - 1) return false;
+        if (!isInside(y, x)) return false;
         return tiles[y][x] != WALL && tiles[y][x] != DOOR;
+    }
+
+    public boolean isInside(int y, int x) {
+        return x >= 0 && x < width && y >= 0 && y < height;
     }
 }

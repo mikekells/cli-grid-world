@@ -13,6 +13,8 @@ public class GameState {
     private final List<Entity> entities = new ArrayList<>();
     private final Player player;
 
+    private int keys = 0;
+
     public GameState(World world, Position position) {
         this.world = world;
 
@@ -20,7 +22,7 @@ public class GameState {
         entities.add(player);
         entities.add(new Entity('P', new Position(3, 5)));
         addMessage("A mysterious pet appears...");
-        entities.add(new Entity('K', new Position(4,8)));
+        entities.add(new Key('K', new Position(4,8)));
     }
 
     public boolean isRunning() {
@@ -60,5 +62,33 @@ public class GameState {
 
     public Entity getPlayer() {
         return player;
+    }
+
+    public Entity findEntityAt(int y, int x) {
+        for (Entity e : entities) {
+            Position p = e.getPosition();
+            if (p.getY() == y && p.getX() == x) return e;
+        }
+        return null;
+    }
+
+    public void removeEntity(Entity e) {
+        entities.remove(e);
+    }
+
+    public int getKeys() {
+        return keys;
+    }
+
+    public void addKey() {
+        keys++;
+    }
+
+    public boolean useKey() {
+        if (keys > 0) {
+            keys--;
+            return true;
+        }
+        return false;
     }
 }
