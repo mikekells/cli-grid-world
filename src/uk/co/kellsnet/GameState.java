@@ -23,6 +23,8 @@ public class GameState {
         entities.add(new Entity('P', new Position(3, 5)));
         addMessage("A mysterious pet appears...");
         entities.add(new Key('K', new Position(4,8)));
+        entities.add(new Door(new Position(5,4)));
+        entities.add(new Door(new Position(5,8)));
     }
 
     public boolean isRunning() {

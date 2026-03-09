@@ -35,10 +35,16 @@ public class Renderer {
                     Entity entity = entityAt.get(key(y, x));
 
                     if (entity != null) {
-                        System.out.print(entity.getGlyph());
+                        if (entity instanceof Door door && door.isOpen()) {
+                            System.out.print('.');
+                        } else {
+                            System.out.print(entity.getGlyph());
+                        }
                     } else {
                         System.out.print(world.getTileAt(y, x));
                     }
+
+
                 }
             }
             System.out.println();

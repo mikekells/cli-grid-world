@@ -32,15 +32,16 @@ public class Interaction {
             return;
         }
 
-        if (tile == '+') {
-            if (state.useKey()) {
-                world.setTileAt(ty, tx, '.');
+        if (target instanceof Door door) {
+            if (door.isOpen()) {
+                state.addMessage("Door is already open");
+            } else if (state.useKey()) {
+                door.open();
                 state.addMessage("Unlocked the door!");
             } else {
                 state.addMessage("Door is locked. Need a key.");
             }
             return;
-
         }
 
         state.addMessage("Nothing here.");

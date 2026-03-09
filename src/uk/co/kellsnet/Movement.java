@@ -12,10 +12,16 @@ public class Movement {
         int ty = y + ny;
         int tx = x + nx;
 
+        Entity target = state.findEntityAt(ty, tx);
+        if (target != null && target.blocksMovement()) {
+            return false;
+        }
+
         if (world.isWalkable(ty, tx)) {
             p.set(ty, tx);
             return true;
         }
+
         return false;
     }
 

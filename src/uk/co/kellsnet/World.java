@@ -44,8 +44,8 @@ public class World {
             tiles[wallY][x] = WALL;
         }
 
-        tiles[wallY][width / 2 - 2] = DOOR;
-        tiles[wallY][width / 2 + 2] = DOOR;
+        tiles[wallY][width / 2 - 2] = FLOOR;
+        tiles[wallY][width / 2 + 2] = FLOOR;
 
         // Place chest
         tiles[4][7] = 'C';
@@ -69,7 +69,7 @@ public class World {
 
     public boolean isWalkable(int y, int x) {
         if (!inBounds(y, x)) return false;
-        return tiles[y][x] != WALL && tiles[y][x] != DOOR;
+        return tiles[y][x] != WALL;
     }
 
     public boolean inBounds(int y, int x) {
