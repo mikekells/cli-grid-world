@@ -46,8 +46,26 @@ public class Main {
                     Interaction.interact(state);
                 }
 
+                case 'F' -> {
+                    state.feedPet();
+                }
+
+                case 'P' -> {
+                    state.setMode(Mode.PLAYING);
+                }
+
                 case 'Q' -> state.stop();
-                default -> System.out.println("Use WASD or Q.");
+                default -> System.out.println("Use WASD, E, F, or Q.");
+            }
+
+            if (c != 'Q') {
+                state.advanceTick();
+                state.updateSimulation();
+            } else if (state.isGameOver()) {
+                switch (c) {
+                    case 'Q' -> state.stop();
+                    default -> state.addMessage("Game over. Press Q to quit.");
+                }
             }
         }
         System.out.println("Buh-bye.");
