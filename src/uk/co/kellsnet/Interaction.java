@@ -10,8 +10,8 @@ public class Interaction {
         int ty = p.getY() + facing.dy();
         int tx = p.getX() + facing.dx();
 
-        if (!world.isInside(ty, tx)) {
-            state.addMessage("Nothing there.");
+        if (!world.inBounds(ty, tx)) {
+            state.addMessage("You can't interact outside the world.");
             return;
         }
 
@@ -29,7 +29,10 @@ public class Interaction {
         if (tile == 'C') {
             world.setTileAt(ty, tx, '.');
             state.addMessage("You opened the chest!");
-        } else if (tile == '+') {
+            return;
+        }
+
+        if (tile == '+') {
             if (state.useKey()) {
                 world.setTileAt(ty, tx, '.');
                 state.addMessage("Unlocked the door!");
@@ -37,8 +40,10 @@ public class Interaction {
                 state.addMessage("Door is locked. Need a key.");
             }
             return;
+
         }
 
+        state.addMessage("Nothing here.");
     }
 
 }

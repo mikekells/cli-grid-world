@@ -68,11 +68,11 @@ public class World {
     }
 
     public boolean isWalkable(int y, int x) {
-        if (!isInside(y, x)) return false;
+        if (!inBounds(y, x)) return false;
         return tiles[y][x] != WALL && tiles[y][x] != DOOR;
     }
 
-    public boolean isInside(int y, int x) {
+    public boolean inBounds(int y, int x) {
         return x >= 0 && x < width && y >= 0 && y < height;
     }
 }

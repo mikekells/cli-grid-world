@@ -18,4 +18,8 @@ public class Entity {
         return position;
     }
 
+    public boolean blocksMovement() {
+        return false;
+    }
+
 }

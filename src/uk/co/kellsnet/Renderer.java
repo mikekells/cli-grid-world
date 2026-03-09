@@ -28,11 +28,17 @@ public class Renderer {
 
         for (int y = 0; y < world.getHeight(); y++) {
             for (int x = 0; x < world.getWidth(); x++) {
-                Entity entity = entityAt.get(key(y, x));
-                if (entity != null) {
-                    System.out.print(entity.getGlyph());
+
+                if(p.getY() == y && p.getX() == x) {
+                    System.out.print(state.getPlayer().getGlyph());
                 } else {
-                    System.out.print(world.getTileAt(y, x));
+                    Entity entity = entityAt.get(key(y, x));
+
+                    if (entity != null) {
+                        System.out.print(entity.getGlyph());
+                    } else {
+                        System.out.print(world.getTileAt(y, x));
+                    }
                 }
             }
             System.out.println();
