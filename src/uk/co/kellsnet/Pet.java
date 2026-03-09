@@ -18,5 +18,11 @@ public class Pet extends Entity{
         }
     }
 
+    public void increaseHunger() {
+        if (hunger < 10) {
+            hunger++;
+        }
+    }
+
 
 }

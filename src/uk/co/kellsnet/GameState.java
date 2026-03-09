@@ -16,6 +16,8 @@ public class GameState {
     private int keys = 0;
     private int tick = 0;
 
+    private final Pet pet;
+
     public GameState(World world, Position position) {
         this.world = world;
         int doorY = world.getHeight() / 2;
@@ -28,7 +30,8 @@ public class GameState {
         this.player = new Player(position);
         entities.add(player);
         entities.add(new Key('K', new Position(4,8)));
-        Pet pet = new Pet(new Position(2,5));
+
+        this.pet = new Pet(new Position(2, 5));
         entities.add(pet);
         addMessage("A mysterious pet arrives...");
     }
@@ -111,4 +114,15 @@ public class GameState {
     public boolean every(int n) {
         return tick > 0 && tick % n == 0;
     }
+
+    public void feedPet() {
+        pet.increaseHunger();
+    }
+
+    public void updateSimulation() {
+        if (every(3)) {
+            pet.decreaseHunger();
+        }
+    }
+
 }
