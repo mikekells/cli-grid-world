@@ -68,19 +68,21 @@ This project focuses on developing instinctive understanding of:
 
 ## Roadmap
 
-### Phase 1 — CLI Foundations (DONE)
+### Phase 1 — CLI Foundations (DONE) ✅
 
 * World generation
 * Player movement
 * Rendering loop
 
-### Phase 2 — System Expansion (In progress)
+### Phase 2 — System Expansion (Done) ✅
 
 * Entities / NPCs
 * Interaction systems
 * Basic simulation behaviour
+* Pet hunger / feeding / death
+* Door entities and blocking rules
 
-### Phase 3 — 2D Transition (Planned)
+### Phase 3 — 2D Transition (In progress)
 
 * Tile-based rendering
 * Sprite movement

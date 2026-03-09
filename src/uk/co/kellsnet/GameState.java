@@ -6,6 +6,8 @@ import java.util.List;
 public class GameState {
 
     private boolean running = true;
+    private Mode mode = Mode.TITLE;
+
     private Direction facing = Direction.RIGHT;
     private final List<String> messages = new ArrayList<>();
 
@@ -126,12 +128,28 @@ public class GameState {
 
         if (pet.isDead()) {
             addMessage("Your pet has died...");
-            stop();
+            setMode(Mode.GAME_OVER);
         }
 
         if(pet.getHunger() == 3) {
             addMessage("Your pet looks very hungry...");
         }
+    }
+
+    public Mode getMode() {
+        return mode;
+    }
+
+    public boolean isPlaying() {
+        return mode == Mode.PLAYING;
+    }
+
+    public boolean isGameOver() {
+        return mode == Mode.GAME_OVER;
+    }
+
+    public void setMode(Mode mode) {
+        this.mode = mode;
     }
 
 }
