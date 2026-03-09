@@ -24,5 +24,9 @@ public class Pet extends Entity{
         }
     }
 
+    public boolean isDead() {
+        return hunger <= 0;
+    }
+
 
 }

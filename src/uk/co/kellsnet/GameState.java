@@ -123,6 +123,15 @@ public class GameState {
         if (every(3)) {
             pet.decreaseHunger();
         }
+
+        if (pet.isDead()) {
+            addMessage("Your pet has died...");
+            stop();
+        }
+
+        if(pet.getHunger() == 3) {
+            addMessage("Your pet looks very hungry...");
+        }
     }
 
 }
