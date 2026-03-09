@@ -17,14 +17,18 @@ public class GameState {
 
     public GameState(World world, Position position) {
         this.world = world;
+        int doorY = world.getHeight() / 2;
+        int doorX1 = world.getWidth() / 2 - 2;
+        int doorX2 = world.getWidth() / 2 + 2;
+
+        entities.add(new Door(new Position(doorY,doorX1)));
+        entities.add(new Door(new Position(doorY,doorX2)));
 
         this.player = new Player(position);
         entities.add(player);
         entities.add(new Entity('P', new Position(3, 5)));
         addMessage("A mysterious pet appears...");
         entities.add(new Key('K', new Position(4,8)));
-        entities.add(new Door(new Position(5,4)));
-        entities.add(new Door(new Position(5,8)));
     }
 
     public boolean isRunning() {
