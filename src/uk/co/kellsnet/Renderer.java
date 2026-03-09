@@ -24,6 +24,7 @@ public class Renderer {
         for (String m : state.getMessages()) {
             System.out.println("- " + m);
         }
+        System.out.println("Tick: " + state.getTick());
         System.out.println();
 
         for (int y = 0; y < world.getHeight(); y++) {
@@ -51,6 +52,11 @@ public class Renderer {
         }
 
         System.out.println();
+        for (Entity e : state.getEntities()) {
+            if (e instanceof Pet pet) {
+                System.out.println("Pet Hunger: " + pet.getHunger());
+            }
+        }
         System.out.println("Keys: " + state.getKeys());
         System.out.println("Use 'WASD' or 'Q' to quit.");
         System.out.print("> ");

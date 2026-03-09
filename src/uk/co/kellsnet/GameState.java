@@ -14,6 +14,7 @@ public class GameState {
     private final Player player;
 
     private int keys = 0;
+    private int tick = 0;
 
     public GameState(World world, Position position) {
         this.world = world;
@@ -26,9 +27,10 @@ public class GameState {
 
         this.player = new Player(position);
         entities.add(player);
-        entities.add(new Entity('P', new Position(3, 5)));
-        addMessage("A mysterious pet appears...");
         entities.add(new Key('K', new Position(4,8)));
+        Pet pet = new Pet(new Position(2,5));
+        entities.add(pet);
+        addMessage("A mysterious pet arrives...");
     }
 
     public boolean isRunning() {
@@ -96,5 +98,17 @@ public class GameState {
             return true;
         }
         return false;
+    }
+
+    public int getTick() {
+        return tick;
+    }
+
+    public void advanceTick() {
+        tick++;
+    }
+
+    public boolean every(int n) {
+        return tick > 0 && tick % n == 0;
     }
 }

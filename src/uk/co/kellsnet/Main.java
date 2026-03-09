@@ -49,6 +49,17 @@ public class Main {
                 case 'Q' -> state.stop();
                 default -> System.out.println("Use WASD or Q.");
             }
+            if (c != 'Q') {
+                state.advanceTick();
+            }
+
+            if (state.every(3)) {
+                for (Entity e : state.getEntities()) {
+                    if (e instanceof Pet pet) {
+                        pet.decreaseHunger();
+                    }
+                }
+            }
         }
         System.out.println("Buh-bye.");
     }
