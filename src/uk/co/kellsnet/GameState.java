@@ -167,6 +167,7 @@ public class GameState {
         for (Entity e : entities) {
             if (e instanceof Enemy enemy) {
                 moveEnemy(enemy);
+                attackPlayer(enemy);
             }
         }
     }
@@ -181,6 +182,15 @@ public class GameState {
         if (world.inBounds(newY, newX) && world.isWalkable(newY, newX)) {
             enemy.getPosition().set(newY, newX);
         }
+    }
+
+    public void attackPlayer(Enemy enemy) {
+
+        Position playerPos = player.getPosition();
+        Position enemyPos = enemy.getPosition();
+
+
+
     }
 
 }

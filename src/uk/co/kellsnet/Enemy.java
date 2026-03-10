@@ -4,6 +4,8 @@ public class Enemy extends Entity{
 
     private int health = 5;
 
+    private boolean enemyAttacks = false;
+
     public Enemy(Position position) {
         super('*', position);
     }
@@ -12,8 +14,14 @@ public class Enemy extends Entity{
         return health;
     }
 
-    public void setHealth() {
+    public void giveHeal() {
         health++;
     }
+
+    public void giveDamage () {
+        health--;
+    }
+
+
 
 }
