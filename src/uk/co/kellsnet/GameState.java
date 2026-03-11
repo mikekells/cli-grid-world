@@ -19,6 +19,7 @@ public class GameState {
     private int tick = 0;
 
     private final Pet pet;
+    private final Enemy enemy;
 
     public GameState(World world, Position position) {
         this.world = world;
@@ -36,6 +37,10 @@ public class GameState {
         this.pet = new Pet(new Position(2, 5));
         entities.add(pet);
         addMessage("A mysterious pet arrives...");
+
+        this.enemy = new Enemy(new Position(6, 1));
+        entities.add(enemy);
+        addMessage("An enemy has spawned!");
     }
 
     public boolean isRunning() {
@@ -134,6 +139,8 @@ public class GameState {
         if(pet.getHunger() == 3) {
             addMessage("Your pet looks very hungry...");
         }
+
+        updateEnemies();
     }
 
     public Mode getMode() {
@@ -150,6 +157,49 @@ public class GameState {
 
     public void setMode(Mode mode) {
         this.mode = mode;
+    }
+
+    public Entity getEnemy() {
+        return enemy;
+    }
+
+    public void updateEnemies() {
+        for (Entity e : entities) {
+            if (e instanceof Enemy enemy) {
+                moveEnemy(enemy);
+            }
+        }
+    }
+
+    public void moveEnemy(Enemy enemy) {
+        int[][] directions = {
+                {-1, 0},    // up
+                {1, 0},     // down
+                {0, -1},    // left
+                {0, 1}      // right
+        };
+
+        int choice = (int) (Math.random() * directions.length);
+
+        int dy = directions[choice][0];
+        int dx = directions[choice][1];
+
+        int currentY = enemy.getPosition().getY();
+        int currentX = enemy.getPosition().getX();
+
+        int targetY = currentY + dy;
+        int targetX = currentX + dx;
+
+        if (world.inBounds(targetY, targetX) && world.isWalkable(targetY, targetX)) {
+            enemy.getPosition().set(targetY, targetX);
+        }
+    }
+
+    public void attackPlayer(Enemy enemy) {
+        Position playerPos = player.getPosition();
+        Position enemyPos = enemy.getPosition();
+
+
     }
 
 }
